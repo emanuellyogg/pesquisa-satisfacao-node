@@ -29,7 +29,7 @@ btnEnviar.addEventListener("click", async function () {
 
   let response = await registrarPesquisa(options);
   console.log(response);
-
+  limparTela()
 });
 
 async function registrarPesquisa(options) {
@@ -74,4 +74,13 @@ function pegarHoraPesquisa() {
   let timeCompleto = ano.toString() + mes.toString() + dia.toString() + hora.toString() + minuto.toString() + segundos.toString();
 
   return timeCompleto;
+}
+
+function limparTela() {
+  document.getElementById("solAtend3").checked = true;
+  document.getElementById("notaAtend5").checked = true;
+  document.getElementById("compAtend5").checked = true;
+  document.getElementById("age").value = "";
+  document.getElementById("idRange").value = "5";
+  document.getElementById("idRadio2").checked = true;
 }

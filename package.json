@@ -1,0 +1,21 @@
+{
+  "name": "10-pesquisa-satisfacao-node",
+  "version": "1.0.0",
+  "description": "Projeto pesquisa de satisfação com node.js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://emanuellyogg@bitbucket.org/emanuellyogg/10-pesquisa-satisfacao-node.git"
+  },
+  "author": "Emanuelly Ogg",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/emanuellyogg/10-pesquisa-satisfacao-node#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}

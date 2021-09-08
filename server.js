@@ -16,3 +16,26 @@ app.listen(porta, function () {
 app.get("/", function (req, resp) {
   resp.sendFile(__dirname + "/view/index.html");
 });
+
+app.post("/pesquisa", function (req, resp) {
+
+  let pesquisa = `${req.body.rg},${req.body.numCand},${req.body.timestamppesquisa}`
+
+  fs.appendFile("pesquisa.csv", `${pesquisa}\n`, function (err) {
+    if (err) {
+      resp.json({
+        "Status": "500",
+        "mensagem": "Erro ao registrar pesquisa, contate o administrador do sistema"
+      }
+      );
+      throw err;
+    } else {
+      console.log("pesquisa registrada com sucesso");
+      resp.json({
+        "Status": "200",
+        "mensagem": "pesquisa Registrado Com sucesso"
+      }
+      );
+    }
+  });
+});

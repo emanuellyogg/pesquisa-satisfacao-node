@@ -19,7 +19,7 @@ app.get("/", function (req, resp) {
 
 app.post("/pesquisa", function (req, resp) {
 
-  let pesquisa = `${req.body.rg},${req.body.numCand},${req.body.timestamppesquisa}`
+  let pesquisa = `${req.body.respA},${req.body.respB},${req.body.respC},${req.body.respD},${req.body.respE},${req.body.respF},${req.body.timestamp}`
 
   fs.appendFile("pesquisa.csv", `${pesquisa}\n`, function (err) {
     if (err) {

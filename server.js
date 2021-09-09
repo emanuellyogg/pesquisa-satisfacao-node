@@ -83,7 +83,7 @@ function calculoApuracao(arrayPes) {
       "muitoAtencioso": calcularEstatistica(arrayPes, 2, "muito atencioso"),
       "educado": calcularEstatistica(arrayPes, 2, "educado"),
       "neutro": calcularEstatistica(arrayPes, 2, "neutro"),
-      "mauHumorado": calcularEstatistica(arrayPes, 2, "mau humorado "),
+      "mauHumorado": calcularEstatistica(arrayPes, 2, "mau humorado"),
       "indelicado": calcularEstatistica(arrayPes, 2, "indelicado ")
     },
     "d": {
@@ -172,10 +172,12 @@ function montaHTML(resulPesq) {
 </head>
 <body>
 
-  <h1> Relatório - Pesquisa Satisfação </h1>
+  <div>
+    <h1> Relatório - Pesquisa Satisfação </h1>
+  </div>
 
   <div>
-    <ul><p>Pergunta A: Sua solicitação foi atendida?</p>
+    <ul><p><b>Pergunta A: Sua solicitação foi atendida?</b></p>
       <li>Totalmente Atendida: ${resulPesq.a.totalmenteAtendida} %</li>
       <li>Parcialmente Atendida: ${resulPesq.a.parcialmenteAtendida} %</li>
       <li>Não foi Atendida: ${resulPesq.a.naoFoiAtendida} %</li>
@@ -183,7 +185,7 @@ function montaHTML(resulPesq) {
   </div>
 
   <div>
-    <ul><p>Pergunta B: Qual nota você daria para o atendimento?</p>
+    <ul><p><b>Pergunta B: Qual nota você daria para o atendimento?</b></p>
       <li>Excelente: ${resulPesq.b.excelente} %</li>
       <li>Bom: ${resulPesq.b.bom} %</li>
       <li>Aceitável: ${resulPesq.b.aceitavel} %</li>
@@ -193,7 +195,7 @@ function montaHTML(resulPesq) {
   </div>
 
   <div>
-    <ul><p>Pergunta C: Como você classificaria o comportamento do atendente?</p>
+    <ul><p><b>Pergunta C: Como você classificaria o comportamento do atendente?</b></p>
       <li>Muito Atencioso: ${resulPesq.c.muitoAtencioso} %</li>
       <li>Educado: ${resulPesq.c.educado} %</li>
       <li>Neutro: ${resulPesq.c.neutro} %</li>
@@ -203,7 +205,7 @@ function montaHTML(resulPesq) {
   </div>
 
   <div>
-    <ul><p>Pergunta D: De 0 à 10, qual nota você daria para o produto:</p>
+    <ul><p><b>Pergunta D: De 0 à 10, qual nota você daria para o produto:</b></p>
       <li>De 0 a 4: ${resulPesq.d.zeroAquatro} %</li>
       <li>De 5 a 7: ${resulPesq.d.cincoAsete} %</li>
       <li>De 8 a 10: ${resulPesq.d.oitoAdez} %</li>
@@ -211,7 +213,7 @@ function montaHTML(resulPesq) {
   </div>
 
   <div>
-    <ul><p>Pergunta E: Informe sua idade:</p>
+    <ul><p><b>Pergunta E: Informe sua idade:</b></p>
       <li>Menos de 15 anos: ${resulPesq.e.menosQuinze} %</li>
       <li>Entre 15 anos e 21 anos: ${resulPesq.e.quinzeEvinteUm} %</li>
       <li>Entre 22 anos e 35 anos: ${resulPesq.e.vinteDoisEtrintaCinco} %</li>
@@ -221,7 +223,7 @@ function montaHTML(resulPesq) {
   </div>
 
   <div>
-    <ul><p>Pergunta F: Informar seu gênero:</p>
+    <ul><p><b>Pergunta F: Informar seu gênero:</b></p>
       <li>Feminino: ${resulPesq.f.feminino} %</li>
       <li>Masculino: ${resulPesq.f.masculino} %</li>
     </ul>

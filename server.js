@@ -84,7 +84,7 @@ function calculoApuracao(arrayPes) {
       "educado": calcularEstatistica(arrayPes, 2, "educado"),
       "neutro": calcularEstatistica(arrayPes, 2, "neutro"),
       "mauHumorado": calcularEstatistica(arrayPes, 2, "mau humorado"),
-      "indelicado": calcularEstatistica(arrayPes, 2, "indelicado ")
+      "indelicado": calcularEstatistica(arrayPes, 2, "indelicado")
     },
     "d": {
       "zeroAquatro": calcEstIntervalos(arrayPes, 3, 0, 4),

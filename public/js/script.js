@@ -126,3 +126,8 @@ function limparTela() {
   document.getElementById("idRange").value = "5";
   document.getElementById("idRadio2").checked = true;
 }
+
+var changeRanger = document.getElementById("idRange");
+changeRanger.addEventListener("change", function () {
+  document.getElementById("spanRanger").innerHTML = changeRanger.value;
+})

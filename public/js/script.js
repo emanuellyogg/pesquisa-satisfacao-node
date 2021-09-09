@@ -98,7 +98,7 @@ function alertaSucesso() {
   textModal.classList.add("text-success", "fw-bold");
   textModal.innerText = "Pesquisa registrada com sucesso!";
   let btnModal = document.getElementById("btnModal");
-  btnModal.classList.add("btn", "btn-success");
+  btnModal.style.display = "none";
 
   setTimeout(function () {
     alertaSucesso.hide();

@@ -58,44 +58,45 @@ app.get("/estatisticas", function (req, resp) {
 
     }
 
-    let resultPesqPercentual = getResultado(ApuracaoPesquisa)
+    let resultPesqPercentual = calculoApuracao(ApuracaoPesquisa)
 
     resp.send(resultPesqPercentual);
   });
 });
 
-function getResultado(arrayPes) {
+function calculoApuracao(arrayPes) {
+
   return {
     "a": {
-      "totalmente atendida": calcularEstatistica(arrayPes, 0, "totalmente atendida") ,
-      "parcialmente atendida": calcularEstatistica(arrayPes, 0, "parcialmente atendida"),
-      "não foi atendida": calcularEstatistica(arrayPes, 0, "não foi atendida")
+      "totalmenteAtendida": calcularEstatistica(arrayPes, 0, "totalmente atendida"),
+      "parcialmenteAtendida": calcularEstatistica(arrayPes, 0, "parcialmente atendida"),
+      "naoFoiAtendida": calcularEstatistica(arrayPes, 0, "não foi atendida")
     },
     "b": {
       "excelente": calcularEstatistica(arrayPes, 1, "excelente"),
       "bom": calcularEstatistica(arrayPes, 1, "bom"),
-      "aceitável": calcularEstatistica(arrayPes, 1, "aceitável"),
+      "aceitavel": calcularEstatistica(arrayPes, 1, "aceitável"),
       "ruim": calcularEstatistica(arrayPes, 1, "ruim"),
-      "péssimo": calcularEstatistica(arrayPes, 1, "péssimo")
+      "pessimo": calcularEstatistica(arrayPes, 1, "péssimo")
     },
     "c": {
-      "muito atencioso": calcularEstatistica(arrayPes, 2, "muito atencioso"),
+      "muitoAtencioso": calcularEstatistica(arrayPes, 2, "muito atencioso"),
       "educado": calcularEstatistica(arrayPes, 2, "educado"),
       "neutro": calcularEstatistica(arrayPes, 2, "neutro"),
-      "mau humorado": calcularEstatistica(arrayPes, 2, "mau humorado "),
+      "mauHumorado": calcularEstatistica(arrayPes, 2, "mau humorado "),
       "indelicado": calcularEstatistica(arrayPes, 2, "indelicado ")
     },
     "d": {
-      "0 a 4": calcEstIntervalos(arrayPes, 3, 0, 4),
-      "5 a 7": calcEstIntervalos(arrayPes, 3, 5, 7),
-      "8 a 10": calcEstIntervalos(arrayPes, 3, 8, 10)
+      "zeroAquatro": calcEstIntervalos(arrayPes, 3, 0, 4),
+      "cincoAsete": calcEstIntervalos(arrayPes, 3, 5, 7),
+      "oitoAdez": calcEstIntervalos(arrayPes, 3, 8, 10)
     },
     "e": {
-      "menos de 15 anos": calcEstIntervalos(arrayPes, 4, 0, 15),
-      "entre 15 e 21 anos": calcEstIntervalos(arrayPes, 4, 15, 21),
-      "entre 22 e 35 anos": calcEstIntervalos(arrayPes, 4, 22, 35),
-      "entre 36 e 50 anos": calcEstIntervalos(arrayPes, 4, 36, 50),
-      "acima de 50 anos": calcEstIntervalos(arrayPes, 4, 50, 200)
+      "menosQuinze": calcEstIntervalos(arrayPes, 4, 0, 15),
+      "quinzeEvinteUm": calcEstIntervalos(arrayPes, 4, 15, 21),
+      "vinteDoisEtrintaCinco": calcEstIntervalos(arrayPes, 4, 22, 35),
+      "trintaSeisEcinquenta": calcEstIntervalos(arrayPes, 4, 36, 50),
+      "maisCinquenta": calcEstIntervalos(arrayPes, 4, 50, 200)
     },
     "f": {
       "feminino": calcularEstatistica(arrayPes, 5, "Feminino"),
@@ -108,31 +109,127 @@ function calcularEstatistica(arrayPes, pergunta, resp) {
   let total = 0;
 
   for (let i = 0; i < arrayPes.length; i++) {
-   
+
     if (arrayPes[i][pergunta] == (resp)) {
-      total ++
+      total++
     }
   }
-  // percent = (total / arrayPes.length-1) * 100;
-  return calcPercentual(arrayPes.length-1, total);
+  return calcPercentual(arrayPes.length - 1, total);
 }
 
 function calcEstIntervalos(arrayPes, pergunta, min, max) {
   let total = 0;
 
   for (let i = 0; i < arrayPes.length; i++) {
-    
+
     let num = arrayPes[i][pergunta];
 
     if (num >= min && num <= max) {
-      total ++
+      total++
     }
   }
-  // percent = (total / arrayPes.length-1) * 100;
-  return calcPercentual(arrayPes.length-1, total);;
-} 
+  return calcPercentual(arrayPes.length - 1, total);;
+}
 
 function calcPercentual(totalPesq, totalResp) {
   let percent = (totalResp / totalPesq) * 100;
-  return percent.toFixed(1);
+  return Number(percent.toFixed(1));
+}
+
+app.get("/relatorio", function (req, resp) {
+
+  fs.readFile("pesquisa.csv", "utf8", function (err, data) {
+
+    if (err) {
+      console.log(`Erro ao ler arquivo: ${err}`);
+    }
+
+    let listaPesquisa = data.split("\n");
+
+    let ApuracaoPesquisa = [];
+
+    for (let i = 0; i < listaPesquisa.length; i++) {
+      const element = listaPesquisa[i];
+      ApuracaoPesquisa.push(element.split(","));
+
+    }
+
+    let resultPesqPercentual = calculoApuracao(ApuracaoPesquisa);
+    console.log(resultPesqPercentual);
+ 
+    resp.end(montaHTML(resultPesqPercentual));
+  });
+});
+
+function montaHTML(resulPesq) {
+  
+  return `
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <h1> Relatório - Pesquisa Satisfação </h1>
+
+  <div>
+    <ul><p>Pergunta A: Sua solicitação foi atendida?</p>
+      <li>Totalmente Atendida: ${resulPesq.a.totalmenteAtendida} %</li>
+      <li>Parcialmente Atendida: ${resulPesq.a.parcialmenteAtendida} %</li>
+      <li>Não foi Atendida: ${resulPesq.a.naoFoiAtendida} %</li>
+    </ul>
+  </div>
+
+  <div>
+    <ul><p>Pergunta B: Qual nota você daria para o atendimento?</p>
+      <li>Excelente: ${resulPesq.b.excelente} %</li>
+      <li>Bom: ${resulPesq.b.bom} %</li>
+      <li>Aceitável: ${resulPesq.b.aceitavel} %</li>
+      <li>Ruim: ${resulPesq.b.ruim} %</li>
+      <li>Péssimo: ${resulPesq.b.pessimo} %</li>
+    </ul>
+  </div>
+
+  <div>
+    <ul><p>Pergunta C: Como você classificaria o comportamento do atendente?</p>
+      <li>Muito Atencioso: ${resulPesq.c.muitoAtencioso} %</li>
+      <li>Educado: ${resulPesq.c.educado} %</li>
+      <li>Neutro: ${resulPesq.c.neutro} %</li>
+      <li>Mau Humorado: ${resulPesq.c.mauHumorado} %</li>
+      <li>Indelicado: ${resulPesq.c.indelicado} %</li>
+    </ul>
+  </div>
+
+  <div>
+    <ul><p>Pergunta D: De 0 à 10, qual nota você daria para o produto:</p>
+      <li>De 0 a 4: ${resulPesq.d.zeroAquatro} %</li>
+      <li>De 5 a 7: ${resulPesq.d.cincoAsete} %</li>
+      <li>De 8 a 10: ${resulPesq.d.oitoAdez} %</li>
+    </ul>
+  </div>
+
+  <div>
+    <ul><p>Pergunta E: Informe sua idade:</p>
+      <li>Menos de 15 anos: ${resulPesq.e.menosQuinze} %</li>
+      <li>Entre 15 anos e 21 anos: ${resulPesq.e.quinzeEvinteUm} %</li>
+      <li>Entre 22 anos e 35 anos: ${resulPesq.e.vinteDoisEtrintaCinco} %</li>
+      <li>Entre 36 anos e 50 anos: ${resulPesq.e.trintaSeisEcinquenta} %</li>
+      <li>Acima de 50 anos: ${resulPesq.e.maisCinquenta} %</li>
+    </ul>
+  </div>
+
+  <div>
+    <ul><p>Pergunta F: Informar seu gênero:</p>
+      <li>Feminino: ${resulPesq.f.feminino} %</li>
+      <li>Masculino: ${resulPesq.f.masculino} %</li>
+    </ul>
+  </div>
+  
+</body>
+</html>
+`
 }

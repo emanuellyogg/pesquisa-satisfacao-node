@@ -141,4 +141,5 @@ function limparTela() {
   document.getElementById("age").value = "";
   document.getElementById("idRange").value = "5";
   document.getElementById("idRadio2").checked = true;
+  document.getElementById("spanRanger").innerHTML = "5";
 }

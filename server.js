@@ -155,8 +155,6 @@ app.get("/relatorio", function (req, resp) {
     }
 
     let resultPesqPercentual = calculoApuracao(ApuracaoPesquisa);
-    console.log(resultPesqPercentual);
- 
     resp.end(montaHTML(resultPesqPercentual));
   });
 });

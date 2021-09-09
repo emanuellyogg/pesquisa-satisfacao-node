@@ -178,54 +178,54 @@ function montaHTML(resulPesq) {
 
   <div>
     <ul><p><b>Pergunta A: Sua solicitação foi atendida?</b></p>
-      <li>Totalmente Atendida: ${resulPesq.a.totalmenteAtendida} %</li>
-      <li>Parcialmente Atendida: ${resulPesq.a.parcialmenteAtendida} %</li>
-      <li>Não foi Atendida: ${resulPesq.a.naoFoiAtendida} %</li>
+      <li>Totalmente Atendida: <b> ${resulPesq.a.totalmenteAtendida} %</b></li>
+      <li>Parcialmente Atendida: <b> ${resulPesq.a.parcialmenteAtendida} %</b></li>
+      <li>Não foi Atendida: <b> ${resulPesq.a.naoFoiAtendida} %</b></li>
     </ul>
   </div>
 
   <div>
     <ul><p><b>Pergunta B: Qual nota você daria para o atendimento?</b></p>
-      <li>Excelente: ${resulPesq.b.excelente} %</li>
-      <li>Bom: ${resulPesq.b.bom} %</li>
-      <li>Aceitável: ${resulPesq.b.aceitavel} %</li>
-      <li>Ruim: ${resulPesq.b.ruim} %</li>
-      <li>Péssimo: ${resulPesq.b.pessimo} %</li>
+      <li>Excelente: <b> ${resulPesq.b.excelente} %</b></li>
+      <li>Bom: <b> ${resulPesq.b.bom} %</b></li>
+      <li>Aceitável: <b> ${resulPesq.b.aceitavel} %</b></li>
+      <li>Ruim: <b> ${resulPesq.b.ruim} %</b></li>
+      <li>Péssimo: <b> ${resulPesq.b.pessimo} %</b></li>
     </ul>
   </div>
 
   <div>
     <ul><p><b>Pergunta C: Como você classificaria o comportamento do atendente?</b></p>
-      <li>Muito Atencioso: ${resulPesq.c.muitoAtencioso} %</li>
-      <li>Educado: ${resulPesq.c.educado} %</li>
-      <li>Neutro: ${resulPesq.c.neutro} %</li>
-      <li>Mau Humorado: ${resulPesq.c.mauHumorado} %</li>
-      <li>Indelicado: ${resulPesq.c.indelicado} %</li>
+      <li>Muito Atencioso: <b> ${resulPesq.c.muitoAtencioso} %</b></li>
+      <li>Educado: <b> ${resulPesq.c.educado} %</b></li>
+      <li>Neutro: <b> ${resulPesq.c.neutro} %</b></li>
+      <li>Mau Humorado: <b> ${resulPesq.c.mauHumorado} %</b></li>
+      <li>Indelicado: <b> ${resulPesq.c.indelicado} %</b></li>
     </ul>
   </div>
 
   <div>
     <ul><p><b>Pergunta D: De 0 à 10, qual nota você daria para o produto:</b></p>
-      <li>De 0 a 4: ${resulPesq.d.zeroAquatro} %</li>
-      <li>De 5 a 7: ${resulPesq.d.cincoAsete} %</li>
-      <li>De 8 a 10: ${resulPesq.d.oitoAdez} %</li>
+      <li>De 0 a 4: <b> ${resulPesq.d.zeroAquatro} %</b></li>
+      <li>De 5 a 7: <b> ${resulPesq.d.cincoAsete} %</b></li>
+      <li>De 8 a 10: <b> ${resulPesq.d.oitoAdez} %</b></li>
     </ul>
   </div>
 
   <div>
     <ul><p><b>Pergunta E: Informe sua idade:</b></p>
-      <li>Menos de 15 anos: ${resulPesq.e.menosQuinze} %</li>
-      <li>Entre 15 anos e 21 anos: ${resulPesq.e.quinzeEvinteUm} %</li>
-      <li>Entre 22 anos e 35 anos: ${resulPesq.e.vinteDoisEtrintaCinco} %</li>
-      <li>Entre 36 anos e 50 anos: ${resulPesq.e.trintaSeisEcinquenta} %</li>
-      <li>Acima de 50 anos: ${resulPesq.e.maisCinquenta} %</li>
+      <li>Menos de 15 anos: <b> ${resulPesq.e.menosQuinze} %</b></li>
+      <li>Entre 15 anos e 21 anos: <b> ${resulPesq.e.quinzeEvinteUm} %</b></li>
+      <li>Entre 22 anos e 35 anos: <b> ${resulPesq.e.vinteDoisEtrintaCinco} %</b></li>
+      <li>Entre 36 anos e 50 anos: <b> ${resulPesq.e.trintaSeisEcinquenta} %</b></li>
+      <li>Acima de 50 anos: <b> ${resulPesq.e.maisCinquenta} %</b></li>
     </ul>
   </div>
 
   <div>
     <ul><p><b>Pergunta F: Informar seu gênero:</b></p>
-      <li>Feminino: ${resulPesq.f.feminino} %</li>
-      <li>Masculino: ${resulPesq.f.masculino} %</li>
+      <li>Feminino: <b> ${resulPesq.f.feminino} %</b></li>
+      <li>Masculino: <b> ${resulPesq.f.masculino} %</b></li>
     </ul>
   </div>
   

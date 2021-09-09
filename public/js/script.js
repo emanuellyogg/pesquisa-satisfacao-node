@@ -98,7 +98,7 @@ function alertaSucesso() {
   textModal.classList.add("text-success", "fw-bold");
   textModal.innerText = "Pesquisa registrada com sucesso!";
   let btnModal = document.getElementById("btnModal");
-  btnModal.classList.add("btn", "btn-success");
+  btnModal.style.display = "none";
 
   setTimeout(function () {
     alertaSucesso.hide();
@@ -118,6 +118,22 @@ function alertaErro() {
   btnModal.classList.add("btn", "btn-danger");
 }
 
+var changeRanger = document.getElementById("idRange");
+changeRanger.addEventListener("change", function () {
+  document.getElementById("spanRanger").innerHTML = changeRanger.value;
+});
+
+var btnEstat = document.getElementById("btnEstatistica");
+btnEstat.addEventListener("click", async function () {
+  let apuracaoEstat = await apurarEstatisticas();
+  console.log(apuracaoEstat);
+});
+
+ async function apurarEstatisticas(paams) {
+  var response = await fetch("http://localhost:3001/estatisticas");
+  return response.json();
+}
+
 function limparTela() {
   document.getElementById("solAtend3").checked = true;
   document.getElementById("notaAtend5").checked = true;
@@ -125,9 +141,5 @@ function limparTela() {
   document.getElementById("age").value = "";
   document.getElementById("idRange").value = "5";
   document.getElementById("idRadio2").checked = true;
+  document.getElementById("spanRanger").innerHTML = "5";
 }
-
-var changeRanger = document.getElementById("idRange");
-changeRanger.addEventListener("change", function () {
-  document.getElementById("spanRanger").innerHTML = changeRanger.value;
-})

@@ -129,7 +129,7 @@ btnEstat.addEventListener("click", async function () {
   console.log(apuracaoEstat);
 });
 
- async function apurarEstatisticas(paams) {
+async function apurarEstatisticas() {
   var response = await fetch("http://localhost:3001/estatisticas");
   return response.json();
 }

@@ -1,3 +1,4 @@
+
 var btnEnviar = document.getElementById("btnEnviar");
 btnEnviar.addEventListener("click", async function () {
 
@@ -28,8 +29,8 @@ btnEnviar.addEventListener("click", async function () {
   };
 
   let response = await registrarPesquisa(options);
-  console.log(response);
-  limparTela()
+  exibirAlerta(response);
+  limparTela();
 });
 
 async function registrarPesquisa(options) {
@@ -74,6 +75,47 @@ function pegarHoraPesquisa() {
   let timeCompleto = ano.toString() + mes.toString() + dia.toString() + hora.toString() + minuto.toString() + segundos.toString();
 
   return timeCompleto;
+}
+
+function exibirAlerta(response) {
+  if (response.Status == "200") {
+
+    alertaSucesso();
+
+  } else if (response.Status == "500") {
+
+    alertaErro();
+  }
+}
+
+function alertaSucesso() {
+  let alertaSucesso = new bootstrap.Modal(document.getElementById("myModal"));
+  alertaSucesso.show();
+  let titModal = document.getElementById("tituloModal");
+  titModal.classList.add("text-success", "fw-bold");
+  titModal.innerText = "Enviado!";
+  let textModal = document.getElementById("textoModal");
+  textModal.classList.add("text-success", "fw-bold");
+  textModal.innerText = "Pesquisa registrada com sucesso!";
+  let btnModal = document.getElementById("btnModal");
+  btnModal.classList.add("btn", "btn-success");
+
+  setTimeout(function () {
+    alertaSucesso.hide();
+  }, 2000);
+}
+
+function alertaErro() {
+  let alertaErro = new bootstrap.Modal(document.getElementById("myModal"));
+  alertaErro.show();
+  let titModal = document.getElementById("tituloModal");
+  titModal.classList.add("text-danger", "fw-bold");
+  titModal.innerText = "Erro!";
+  let textModal = document.getElementById("textoModal");
+  textModal.classList.add("text-danger", "fw-bold");
+  textModal.innerText = "Erro ao registrar pesquisa, contate o administrador do sistema.";
+  let btnModal = document.getElementById("btnModal");
+  btnModal.classList.add("btn", "btn-danger");
 }
 
 function limparTela() {

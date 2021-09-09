@@ -118,6 +118,22 @@ function alertaErro() {
   btnModal.classList.add("btn", "btn-danger");
 }
 
+var changeRanger = document.getElementById("idRange");
+changeRanger.addEventListener("change", function () {
+  document.getElementById("spanRanger").innerHTML = changeRanger.value;
+});
+
+var btnEstat = document.getElementById("btnEstatistica");
+btnEstat.addEventListener("click", async function () {
+  let apuracaoEstat = await apurarEstatisticas();
+  console.log(apuracaoEstat);
+});
+
+ async function apurarEstatisticas(paams) {
+  var response = await fetch("http://localhost:3001/estatisticas");
+  return response.json();
+}
+
 function limparTela() {
   document.getElementById("solAtend3").checked = true;
   document.getElementById("notaAtend5").checked = true;
@@ -126,8 +142,3 @@ function limparTela() {
   document.getElementById("idRange").value = "5";
   document.getElementById("idRadio2").checked = true;
 }
-
-var changeRanger = document.getElementById("idRange");
-changeRanger.addEventListener("change", function () {
-  document.getElementById("spanRanger").innerHTML = changeRanger.value;
-})

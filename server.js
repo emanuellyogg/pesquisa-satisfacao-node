@@ -39,3 +39,26 @@ app.post("/pesquisa", function (req, resp) {
     }
   });
 });
+
+app.get("/estatisticas", function (req, resp) {
+  
+  fs.readFile("pesquisa.csv", "utf8", function (err, data) {
+
+    if (err) {
+      console.log(`Erro ao ler arquivo: ${err}`);
+    }
+
+    let listaPesquisa = data.split("\r\n");
+
+    let ApuracaoPesquisa = [];
+
+    for (let i = 0; i < listaPesquisa.length; i++) {
+      const element = listaPesquisa[i];
+      ApuracaoPesquisa.push(element.split(","));
+      
+    }
+
+    console.log(ApuracaoPesquisa);
+    resp.send(ApuracaoPesquisa);
+  })
+})

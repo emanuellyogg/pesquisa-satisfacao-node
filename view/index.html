@@ -9,6 +9,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
+  <link rel="stylesheet" href="css/style.css">
+
   <title>Pesquisa de satisfação - Empresa XYZ</title>
 </head>
 
@@ -26,106 +28,111 @@
         </div>
 
         <div class="form-control">
-          <span for="solAtend" class="fw-bold">1. Sua solicitação foi atendida?</span>
+          <span for="solAtend" class="fw-bold">A. Sua solicitação foi atendida?</span>
 
           <div class="form-check ">
-            <input type="radio" class="form-check-input" id="solAtend3" name="solAtend" checked>
+            <input type="radio" class="form-check-input" id="solAtend3" name="solAtend" value="totalmente atendida"
+              checked>
             <label for="solAtend3" class="form-check-label">totalmente atendida</label>
           </div>
 
           <div class="form-check">
-            <input type="radio" class="form-check-input" id="solAtend2" name="solAtend">
+            <input type="radio" class="form-check-input" id="solAtend2" name="solAtend" value="parcialmente atendida">
             <label for="solAtend2" class="form-check-label">parcialmente atendida</label>
           </div>
 
           <div class="form-check mb-3">
-            <input type="radio" class="form-check-input pe-auto" id="solAtendida1" name="solAtend">
+            <input type="radio" class="form-check-input pe-auto" id="solAtendida1" name="solAtend"
+              value="não foi atendida">
             <label for="solAtend1" class="form-check-label">não foi atendida</label>
           </div>
         </div>
 
         <div class="form-control border-end-0 border-start-0">
-          <span for="notaAtend" class="fw-bold">2. Qual nota você daria para o atendimento?</span>
+          <span for="notaAtend" class="fw-bold">B. Qual nota você daria para o atendimento?</span>
 
           <div class="form-check ">
-            <input type="radio" class="form-check-input" id="notaAtend5" name="notaAtend" checked>
+            <input type="radio" class="form-check-input" id="notaAtend5" name="notaAtend" value="excelente" checked>
             <label for="notaAtend5" class="form-check-label">excelente</label>
           </div>
 
           <div class="form-check">
-            <input type="radio" class="form-check-input" id="notaAtend4" name="notaAtend">
+            <input type="radio" class="form-check-input" id="notaAtend4" name="notaAtend" value="bom">
             <label for="notaAtend4" class="form-check-label">bom</label>
           </div>
 
           <div class="form-check">
-            <input type="radio" class="form-check-input" id="notaAtend3" name="notaAtend">
+            <input type="radio" class="form-check-input" id="notaAtend3" name="notaAtend" value="aceitável">
             <label for="notaAtend3" class="form-check-label">aceitável</label>
           </div>
 
           <div class="form-check">
-            <input type="radio" class="form-check-input" id="notaAtend2" name="notaAtend">
+            <input type="radio" class="form-check-input" id="notaAtend2" name="notaAtend" value="ruim">
             <label for="notaAtend2" class="form-check-label">ruim</label>
           </div>
 
           <div class="form-check mb-3">
-            <input type="radio" class="form-check-input" id="notaAtend1" name="notaAtend">
+            <input type="radio" class="form-check-input" id="notaAtend1" name="notaAtend" value="péssimo">
             <label for="notaAtend1" class="form-check-label">péssimo</label>
           </div>
         </div>
 
         <div class="form-control border-end-0 border-start-0">
-          <span for="compAtend" class="fw-bold">3. Como você classificaria o comportamento do atendente?</span>
+          <span for="compAtend" class="fw-bold">C. Como você classificaria o comportamento do atendente?</span>
 
           <div class="form-check ">
-            <input type="radio" class="form-check-input" id="compAtend5" name="compAtend" checked>
+            <input type="radio" class="form-check-input" id="compAtend5" name="compAtend" value="muito atencioso"
+              checked>
             <label for="compAtend5" class="form-check-label">muito atencioso</label>
           </div>
 
           <div class="form-check">
-            <input type="radio" class="form-check-input" id="compAtend4" name="compAtend">
+            <input type="radio" class="form-check-input" id="compAtend4" name="compAtend" value="educado">
             <label for="compAtend4" class="form-check-label">educado</label>
           </div>
 
           <div class="form-check">
-            <input type="radio" class="form-check-input" id="compAtend3" name="compAtend">
+            <input type="radio" class="form-check-input" id="compAtend3" name="compAtend" value="neutro">
             <label for="compAtend3" class="form-check-label">neutro</label>
           </div>
 
           <div class="form-check">
-            <input type="radio" class="form-check-input" id="compAtend2" name="compAtend">
+            <input type="radio" class="form-check-input" id="compAtend2" name="compAtend" value="mau humorado">
             <label for="compAtend2" class="form-check-label">mau humorado</label>
           </div>
 
           <div class="form-check mb-3">
-            <input type="radio" class="form-check-input" id="compAtend1" name="compAtend">
+            <input type="radio" class="form-check-input" id="compAtend1" name="compAtend" value="indelicado">
             <label for="compAtend1" class="form-check-label">indelicado</label>
           </div>
         </div>
 
         <div class="form-control pb-4 border-end-0 border-start-0">
-          <label for="idRange" class="form-label fw-bold">4. De 0 à 10, qual nota você daria para o produto:</label>
+          <label for="idRange" class="form-label fw-bold">D. De 0 à 10, qual nota você daria para o produto:</label>
           <input type="range" class="form-range" id="idRange" name="nmRange" min="0" max="10" value="5">
-          <output name="nmOut" for="idRange">5</output>
+          <div class="text-center ">
+            <span class="fw-bold" id="spanRanger">5</span>
+          </div>
         </div>
 
         <div class="form-control pb-4 border-end-0 border-start-0">
-          <label for="age" class="form-label fw-bold">5. Informe sua idade: </label>
+          <label for="age" class="form-label fw-bold">E. Informe sua idade: </label>
           <input type="number" class="form-control" id="age" name="age" placeholder="idade">
         </div>
 
         <div class="form-control border-end-0 border-start-0">
-          <span for="gender" class="fw-bold">6. Informar seu gênero: </span>
+          <span for="gender" class="fw-bold">F. Informar seu gênero: </span>
 
           <div class="form-check ">
-            <input type="radio" class="form-check-input" id="idRadio2" name="gender" checked>
+            <input type="radio" class="form-check-input" id="idRadio2" name="gender" value="Feminino" checked>
             <label for="idRadio2" class="form-check-label">Feminino</label>
           </div>
 
           <div class="form-check mb-3">
-            <input type="radio" class="form-check-input" id="idRadio1" name="gender">
+            <input type="radio" class="form-check-input" id="idRadio1" name="gender" value="Masculino">
             <label for="idRadio1" class="form-check-label">Masculino</label>
           </div>
-          <button type="submit" class="btn btn-success">Enviar</button>
+          <button type="button" id="btnEnviar" class="btn btn-success">Enviar</button>
         </div>
       </div>
     </div>
@@ -136,7 +143,27 @@
     <p class="text-center p-2 my-0">&copy; Empresa XYZ</p>
   </div>
 
-  <script src="../public/js/script.js"></script>
+  <div class="modal fade" tabindex="-1" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="tituloModal"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="textoModal"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="" data-bs-dismiss="modal" id="btnModal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
 
 </body>
 

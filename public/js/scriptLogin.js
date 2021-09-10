@@ -1,8 +1,8 @@
 var btnLogin = document.getElementById("btnLogin");
-btnLogin.addEventListener("click", function () {
+btnLogin.addEventListener("click", async function () {
 
   var usuario = document.getElementById("idNameUser").value;
-  var password = Number(document.getElementById("idPassword").value);
+  var password = document.getElementById("idPassword").value;
 
   const update = {
     userId: usuario,

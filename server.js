@@ -283,7 +283,7 @@ function verifyJWT(req, resp, next) {
   jwt.verify(token, SECRET, function (err, decoded) {
 
     if (err) {
-      resp.status(401).end();
+      resp.json({"Status": "401"}).end();
     }
 
     console.log(req.header("x-access-token"));

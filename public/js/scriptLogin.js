@@ -17,11 +17,11 @@ btnLogin.addEventListener("click", async function () {
     body: JSON.stringify(update),
   };
 
-  let response = await verificarUser(options);
+  var response = await fetch("http://localhost:3001/login", options);
+  var autentic = await response.json();
+  
+  localStorage.removeItem("token");
+  localStorage.setItem("token", autentic.token);
+  
   console.log(response);
 });
-
-async function verificarUser(options) {
-  let response = await fetch("http://localhost:3001/login", options);
-  return response.json();
-}

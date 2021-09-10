@@ -20,23 +20,27 @@ btnEnviar.addEventListener("click", async function () {
     timestamp: timePesquisa
   }
 
+  var autentic = localStorage.getItem("token");
+
   const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      'x-access-token': autentic
     },
     body: JSON.stringify(update),
   };
 
-  console.log(options);
-
   let response = await registrarPesquisa(options);
+
+  
   exibirAlerta(response);
   limparTela();
 });
 
 async function registrarPesquisa(options) {
   let response = await fetch("http://localhost:3001/pesquisa", options);
+  console.log(response);
   return response.json();
 }
 
@@ -87,10 +91,15 @@ function exibirAlerta(response) {
   } else if (response.Status == "500") {
 
     alertaErro();
+
+  } else if (response.Status == "401") {
+
+    alertaErroAutentic();
   }
 }
 
 function alertaSucesso() {
+  limparClass()
   let alertaSucesso = new bootstrap.Modal(document.getElementById("myModal"));
   alertaSucesso.show();
   let titModal = document.getElementById("tituloModal");
@@ -108,6 +117,7 @@ function alertaSucesso() {
 }
 
 function alertaErro() {
+  limparClass()
   let alertaErro = new bootstrap.Modal(document.getElementById("myModal"));
   alertaErro.show();
   let titModal = document.getElementById("tituloModal");
@@ -117,7 +127,32 @@ function alertaErro() {
   textModal.classList.add("text-danger", "fw-bold");
   textModal.innerText = "Erro ao registrar pesquisa, contate o administrador do sistema.";
   let btnModal = document.getElementById("btnModal");
+  btnModal.style.display = "block";
   btnModal.classList.add("btn", "btn-danger");
+}
+
+function alertaErroAutentic() {
+  limparClass()
+  let alertaErrAut = new bootstrap.Modal(document.getElementById("myModal"));
+  alertaErrAut.show();
+  let titModal = document.getElementById("tituloModal");
+  titModal.classList.add("text-danger", "fw-bold");
+  titModal.innerText = "Erro!";
+  let textModal = document.getElementById("textoModal");
+  textModal.classList.add("text-danger", "fw-bold");
+  textModal.innerText = "Usuário não autorizado!";
+  let btnModal = document.getElementById("btnModal");
+  btnModal.style.display = "block";
+  btnModal.classList.add("btn", "btn-danger");
+}
+
+function limparClass() {
+  let titModal = document.getElementById("tituloModal");
+  titModal.classList.remove("text-danger", "text-success");
+  titModal.innerText = "";
+  let textModal = document.getElementById("textoModal");
+  textModal.classList.remove("text-danger", "text-success");
+  textModal.innerText = "";
 }
 
 var changeRanger = document.getElementById("idRange");

@@ -28,6 +28,8 @@ btnEnviar.addEventListener("click", async function () {
     body: JSON.stringify(update),
   };
 
+  console.log(options);
+
   let response = await registrarPesquisa(options);
   exibirAlerta(response);
   limparTela();

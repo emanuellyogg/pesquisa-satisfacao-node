@@ -3,6 +3,8 @@ const fs = require("fs");
 const app = express();
 const porta = 3001;
 const cors = require('cors');
+const jwt = require("jsonwebtoken")
+const SECRET = "SegredoPesquisa"
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -160,7 +162,7 @@ app.get("/relatorio", function (req, resp) {
 });
 
 function montaHTML(resulPesq) {
-  
+
   return `
   <!DOCTYPE html>
 <html lang="en">
@@ -232,4 +234,36 @@ function montaHTML(resulPesq) {
 </body>
 </html>
 `
+}
+
+app.post("/login", function (req, resp) {
+
+  if (req.body.user == "manu" && req.body.pass === 789456) {
+    const token = jwt.sign({ xxx: req.body.user }, SECRET, { expiresIn: 120 });
+    resp.json({ auth: true, token });
+  }
+  resp.status(401).end();
+});
+
+app.get("/usuario", verificarUser, function (req, resp) {
+
+  resp.json({
+    msn: "Usuário autenticado com sucesso",
+    user: req.query.nmUser,
+    codigoUser: req.query.nmCodUser
+  });
+});
+
+function verificarUser(req, resp, next) {
+  
+  const token = req.header("x-access-token");
+  jwt.verify(token, SECRET, function (err, decoded) {
+    
+    if (err) {
+      resp.status(401).end();
+    }
+
+    req.dec = decoded.xxx;
+    next();
+  });
 }

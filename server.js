@@ -19,7 +19,7 @@ app.get("/", function (req, resp) {
   resp.sendFile(__dirname + "/view/index.html");
 });
 
-app.post("/pesquisa", function (req, resp) {
+app.post("/pesquisa", verifyJWT, function (req, resp) {
 
   let pesquisa = `${req.body.respA},${req.body.respB},${req.body.respC},${req.body.respD},${req.body.respE},${req.body.respF},${req.body.timestamp}`
 
@@ -242,32 +242,52 @@ app.get("/login", function (req, resp) {
 
 app.post("/login", function (req, resp) {
 
-  if (req.body.user == "manu" && req.body.pass === 789456) {
-    const token = jwt.sign({ xxx: req.body.user }, SECRET, { expiresIn: 120 });
-    resp.json({ auth: true, token });
-  }
-  resp.status(401).end();
-});
+  fs.readFile("usuarios.csv", "utf8", function (err, data) {
 
-app.get("/usuario", verificarUser, function (req, resp) {
+    if (err) {
+      console.log(`Erro ao ler arquivo: ${err}`);
+    }
 
-  resp.json({
-    msn: "Usuário autenticado com sucesso",
-    user: req.query.nmUser,
-    codigoUser: req.query.nmCodUser
+    let usuarios = data.split("\r\n");
+    let arrayUsuarios = [];
+
+    for (let i = 0; i < usuarios.length; i++) {
+      const element = usuarios[i];
+      arrayUsuarios.push(element.split(","));
+    }
+
+    if (autenticarUser(arrayUsuarios, req.body)) {
+      const token = jwt.sign({ name: req.body.userId }, SECRET, { expiresIn: 300 });
+
+      resp.json({auth: true, token});
+    }
+    resp.status(401).end();
   });
 });
 
-function verificarUser(req, resp, next) {
-  
+function autenticarUser(userCadastrados, user) {
+
+  for (let i = 0; i < userCadastrados.length; i++) {
+    const element = userCadastrados[i];
+
+    if (user.userId == element[0] && user.senha == element[1]) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function verifyJWT(req, resp, next) {
+
   const token = req.header("x-access-token");
   jwt.verify(token, SECRET, function (err, decoded) {
-    
+
     if (err) {
       resp.status(401).end();
     }
 
-    req.dec = decoded.xxx;
+    console.log(req.header("x-access-token"));
+    req.dec = decoded.name;
     next();
   });
 }

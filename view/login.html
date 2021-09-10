@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <title>Login</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-6">
+        <section>
+          <form action="">
+            <div class="form-control my-4">
+              <div class="m-4">
+                <p class="fs-1 text-center text-primary fw-bold m-4">Login</p>
+                <input type="text" id="nameUser" class="form-control border-primary border-end-0 border-start-0 border-top-0" name="nameUser" placeholder="usuário" required autofocus>
+              </div>
+              
+              <div class="m-4">
+                <input type="password" id="idPassword" class="form-control border-primary border-end-0 border-start-0 border-top-0" name="nmPassword" placeholder="senha" size="20" required autocomplete="off" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[@#$])[a-zA-Z0-9@#$]{8,15}$" aria-describedby="passwordHelpBlock">
+                <div id="passwordHelpBlock" class="form-text">
+                  <p class="fw-lighter">
+                    Sua senha deverá ter no mínimo 8 e no máximo 15 caracteres, sendo composto por pelo menos uma letra maiúscula, uma minúscula, números e caracteres especiais.
+                  </p>
+                </div>
+
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                  <label class="form-check-label" for="exampleCheck1">Lembrar de mim</label>
+                </div>
+              </div>
+              
+              <div class="container d-grid gap-2 my-4">
+                <button type="submit" id="btLogin" class="btn btn-outline-success">Login</button>
+                <button type="button" id="btPassword" class="btn">Recuperar senha</button> 
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>

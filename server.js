@@ -236,6 +236,10 @@ function montaHTML(resulPesq) {
 `
 }
 
+app.get("/login", function (req, resp) {
+  resp.sendFile(__dirname + "/view/login.html");
+});
+
 app.post("/login", function (req, resp) {
 
   if (req.body.user == "manu" && req.body.pass === 789456) {
